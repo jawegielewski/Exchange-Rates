@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ExchangeRates</string>
+    <string name="about">About</string>
+    <string name="fragment">fragment</string>
+    <string name="about_text">Application has been written by <b>Jakub Węgielewski</b> as a part of recrutiment process to Qpony company.</string>
+    <string name="day_x">Day %s</string>
+    <string name="error_during_api_call">During getting API call an error occurred: %s</string>
+</resources>

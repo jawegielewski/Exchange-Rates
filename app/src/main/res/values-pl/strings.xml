@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KursyWalut</string>
+    <string name="about">O programie</string>
+    <string name="fragment">fragment</string>
+    <string name="about_text">Aplikacja została napisana przez <b>Jakuba Węgielewskiego</b> w ramach procesu rekrutacji do firmy Qpony.</string>
+    <string name="day_x">Dzień %s</string>
+    <string name="error_during_api_call">Podczas wykonywania zapytania API pojawił się błąd: %s</string>
+</resources>
