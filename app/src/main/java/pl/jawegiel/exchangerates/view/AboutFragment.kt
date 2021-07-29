@@ -16,18 +16,4 @@ class AboutFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.about_fragment,container,false)
     }
-
-    override  fun onSaveInstanceState(  outState:Bundle){
-        super.onSaveInstanceState(outState)
-        outState.putCharSequence("a","bc")
-    }
-
-    override  fun onViewStateRestored(@Nullable savedInstanceState:Bundle?){
-        super.onViewStateRestored(savedInstanceState)
-        var  savedTitle: String? = null
-        if (savedInstanceState != null){
-            savedTitle = savedInstanceState.getString("a")
-            Log.e("xxx", savedTitle.toString())
-        }
-    }
 }
