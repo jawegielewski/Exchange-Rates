@@ -11,7 +11,6 @@ interface CurrencyListFragmentContract {
         interface RestModel {
             fun fetchApiResponse(presenter: CurrencyListFragmentPresenter, date: String)
         }
-        
         interface SharedPreferencesModel {
             fun getRawJson(date: String): String
             fun checkIfSuchDateExists(strDate: String?): Boolean
