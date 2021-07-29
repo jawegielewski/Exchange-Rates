@@ -16,7 +16,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
 // @formatter:off
-class MainPresenter(
+class CurrencyListFragmentPresenter(
     private val view: CurrencyListFragmentContract.View,
     private val restModel: CurrencyListFragmentContract.Model.RestModel,
     private val spModel: SharedPreferencesModel

@@ -2,14 +2,14 @@ package pl.jawegiel.exchangerates.interfaces
 
 import androidx.recyclerview.widget.RecyclerView
 import pl.jawegiel.exchangerates.model.ApiResponse
-import pl.jawegiel.exchangerates.presenter.MainPresenter
+import pl.jawegiel.exchangerates.presenter.CurrencyListFragmentPresenter
 
 // @formatter:off
 interface CurrencyListFragmentContract {
 
     interface Model {
         interface RestModel {
-            fun fetchApiResponse(presenter: MainPresenter, date: String)
+            fun fetchApiResponse(presenter: CurrencyListFragmentPresenter, date: String)
         }
         interface SharedPreferencesModel {
             fun getRawJson(date: String): String

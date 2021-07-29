@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import kotlinx.coroutines.*
 import pl.jawegiel.exchangerates.CurrencyService
 import pl.jawegiel.exchangerates.interfaces.CurrencyListFragmentContract
-import pl.jawegiel.exchangerates.presenter.MainPresenter
+import pl.jawegiel.exchangerates.presenter.CurrencyListFragmentPresenter
 import java.lang.ref.WeakReference
 
 // @formatter:off
@@ -23,7 +23,7 @@ class RestModel(private val contextWeakReference: WeakReference<Context>) : Curr
         return ai.metaData["API_KEY"].toString()
     }
 
-    override fun fetchApiResponse(presenter: MainPresenter, date: String) {
+    override fun fetchApiResponse(presenter: CurrencyListFragmentPresenter, date: String) {
         job = CoroutineScope(Dispatchers.IO).launch {
             val response = userService.getCurrenciesForDate(date, getApiKey())
             withContext(Dispatchers.Main) {

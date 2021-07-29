@@ -19,7 +19,7 @@ import pl.jawegiel.exchangerates.model.ApiResponse
 import pl.jawegiel.exchangerates.model.Currency
 import pl.jawegiel.exchangerates.model.RestModel
 import pl.jawegiel.exchangerates.model.SharedPreferencesModel
-import pl.jawegiel.exchangerates.presenter.MainPresenter
+import pl.jawegiel.exchangerates.presenter.CurrencyListFragmentPresenter
 import java.lang.ref.WeakReference
 
 // @formatter:off
@@ -38,7 +38,7 @@ class CurrencyListFragment : Fragment(), CurrencyListFragmentContract.View {
     }
 
     private lateinit var restModel: RestModel
-    private lateinit var mainPresenter: MainPresenter
+    private lateinit var clfPresenter: CurrencyListFragmentPresenter
     private lateinit var itemAdapter: ItemAdapter
     private lateinit var _layoutManager: LinearLayoutManager
     private lateinit var currentDate: String
@@ -58,16 +58,16 @@ class CurrencyListFragment : Fragment(), CurrencyListFragmentContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _layoutManager = LinearLayoutManager(activity)
-        mainPresenter = MainPresenter(this, restModel, SharedPreferencesModel(activity as Activity))
-        currentDate = mainPresenter.convertCurrentDate()
-        if (mainPresenter.checkIfSuchDateExistsInSp(currentDate)) {
+        clfPresenter = CurrencyListFragmentPresenter(this, restModel, SharedPreferencesModel(activity as Activity))
+        currentDate = clfPresenter.convertCurrentDate()
+        if (clfPresenter.checkIfSuchDateExistsInSp(currentDate)) {
             Log.i(TAG, "Date $currentDate already exists in SharedPreferences (first element)")
-            mainPresenter.processDateWithoutMakingACall(currentDate)
+            clfPresenter.processDateWithoutMakingACall(currentDate)
         } else {
             Log.i(TAG, "Date $currentDate does not exist in SharedPreferences. Retrofit call will be made (first element)")
-            mainPresenter.makeACall(currentDate)
+            clfPresenter.makeACall(currentDate)
         }
-        mainPresenter.saveNumberOfMinusDaysIntoSp(START_VALUE)
+        clfPresenter.saveNumberOfMinusDaysIntoSp(START_VALUE)
         addScrollerListener()
     }
 
@@ -116,7 +116,7 @@ class CurrencyListFragment : Fragment(), CurrencyListFragmentContract.View {
         rv_item.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(rvItem: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(rvItem, newState)
-                mainPresenter.processRvItemOnScroll(isLoading, rvItem, newState)
+                clfPresenter.processRvItemOnScroll(isLoading, rvItem, newState)
             }
         })
     }
