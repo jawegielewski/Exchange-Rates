@@ -2,6 +2,8 @@ package pl.jawegiel.exchangerates.view
 
 import android.content.res.Resources
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.MotionEvent
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -24,16 +26,19 @@ class MainActivity : AppCompatActivity(), OnChangeFragment {
         const val DELAY_TO_ENSURE_REFRESHING_VIEW = 100L
     }
 
+
     private var motionLayoutProgress: Int = 0
     private var llToolbarY: Int = 0
     private lateinit var currentFragment: String
     private lateinit var changeFragmentDataFromChangeFragmentMethod: ChangeFragmentData
+    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         setContentView(R.layout.main_activity)
 
+        handler = Handler(Looper.getMainLooper())
         initToolbarTitleListener()
         initMotionLayoutListener()
 
@@ -144,7 +149,7 @@ class MainActivity : AppCompatActivity(), OnChangeFragment {
         ll_toolbar.addOnLayoutChangeListener { view, _, _, _, _, _, _, _, _ ->
             llToolbarY = view.y.toInt()
 
-            fragment_container.postDelayed({
+            handler.postDelayed({
                 val params = fragment_container.layoutParams as RelativeLayout.LayoutParams
                 params.height = getHeightOfScreenWithoutBars() - llToolbarY - ll_toolbar.height
                 fragment_container.layoutParams = params
