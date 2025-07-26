@@ -1,6 +1,6 @@
 1) The extended toolbar with photo can be collapsed / expanded by making appropriate gestures on it.
 
-2) Subsequent days are downloaded after swiping down or up on the recyclerview.
+2) Subsequent days are fetched after swiping down or up on the recyclerview.
 
 3) Clicking on the selected exchange rate or selecting "about the program" moves you to another fragment, and its name appears on the toolbar subtitle.
 
@@ -12,7 +12,7 @@
 ---------------------------------------------------------------------------------------------------------------------------
 
 
-1) Rozszerzony toolbar ze zdjęciem można zwinąć/rozwinąc, wykonując na nim odpowiednie gesty.
+1) Rozszerzony toolbar ze zdjęciem można zwinąć / rozwinąć, wykonując na nim odpowiednie gesty.
 
 2) Kolejne dni pobierają się po "przejechaniu" w dół lub w górę na obiekcie recyclerview.
 
